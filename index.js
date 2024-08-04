@@ -12,3 +12,8 @@ export {
     DataPaging, DataTable, InputDate, InputMask, InputMoney, 
     InputNumber, InputTime, LoadingPage, PageHeader
 };
+
+export default {
+    DataPaging, DataTable, InputDate, InputMask, InputMoney, 
+    InputNumber, InputTime, LoadingPage, PageHeader
+};
