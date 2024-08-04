@@ -1,3 +1,9 @@
+import "jquery-ui";
+import "jquery-ui-dist/jquery-ui.css";
+import "./assets/jquery/js/jquery.maskedinput.js";
+import "./assets/clockpicker/bootstrap-clockpicker.js";
+import "./assets/clockpicker/bootstrap-clockpicker.css";
+
 import DataPaging from "./controls/DataPaging.vue";
 import DataTable from "./controls/DataTable.vue";
 import InputDate from "./controls/InputDate.vue";
