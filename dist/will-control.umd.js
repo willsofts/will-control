@@ -11936,7 +11936,6 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(274);
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataPaging.vue?vue&type=template&id=002819c3
 
 
@@ -13419,17 +13418,10 @@ const PageHeader_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(PageHea
 
 
 
-
-const Components = {
+/* harmony default export */ const src_0 = ({
     DataPaging: DataPaging, DataTable: DataTable, InputDate: InputDate, InputMask: InputMask, InputMoney: InputMoney, 
     InputNumber: InputNumber, InputTime: InputTime, LoadingPage: LoadingPage, PageHeader: PageHeader
-}
-
-Object.keys(Components).forEach(name => {
-    external_commonjs_vue_commonjs2_vue_root_Vue_default().component(name, Components[name]);
 });
-
-/* harmony default export */ const src_0 = (Components);
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
