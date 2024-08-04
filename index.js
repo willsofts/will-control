@@ -8,7 +8,7 @@ import InputTime from "./controls/InputTime.vue";
 import LoadingPage from "./controls/LoadingPage.vue";
 import PageHeader from "./controls/PageHeader.vue";
 
-export {
+export default {
     DataPaging, DataTable, InputDate, InputMask, InputMoney, 
     InputNumber, InputTime, LoadingPage, PageHeader
 }
