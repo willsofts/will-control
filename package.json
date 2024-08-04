@@ -5,7 +5,7 @@
   "main": "dist/will-control.umd.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name will-control src/index.js",
-    "build:lib": "vue-cli-service build --target lib --name will-control src/index.js"
+    "build:umd": "vue-cli-service build --target lib --name will-control src/index.js"
   },
   "keywords": [
     "DataPaging",
