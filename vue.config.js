@@ -4,19 +4,16 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({  
   transpileDependencies: true,
   css: {
-    extract: false
+    extract: true
   },
   configureWebpack: {
-    output: {
-      libraryExport: 'default'
-    },    
     devtool: "source-map",
     optimization: {
       minimize: false
     },
     resolve: {
       alias: {
-        // bind to modules;
+        "jquery-ui": "jquery-ui-dist/jquery-ui.js",
         modules: path.join(__dirname, "node_modules")
       }
     },
