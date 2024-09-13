@@ -31736,8 +31736,8 @@ class Paging {
         }
         let fsPreviousPage = fsCounter * fsLimit;
         if (fsLimit > 0 && (fsPages > fsLimit)) {
-            let first = {page: 1, text: "|&lt;", css: ""};
-            let previous = {page: fsPreviousPage, text: "&lt;&lt;", css: ""};
+            let first = {page: 1, text: "|<", css: ""};
+            let previous = {page: fsPreviousPage, text: "<<", css: ""};
             results.push(first);
             results.push(previous);
         }
@@ -31753,7 +31753,7 @@ class Paging {
                     if (fsPageNumber > fsTotalPage) {
                         fsPageNumber = fsTotalPage;
                     }
-                    let next = {page: fsPageNumber, text: "&gt;&gt;", css: ""};
+                    let next = {page: fsPageNumber, text: ">>", css: ""};
                     results.push(next);
                     break;
                 }
@@ -31770,7 +31770,7 @@ class Paging {
             for (let i = 0; i < fsRows; i += fsChapters) {
                 fsPageNumber++;
             }
-            let last = {page: fsPageNumber, text: "&gt;|", css: ""};
+            let last = {page: fsPageNumber, text: ">|", css: ""};
             results.push(last);
         }
         return results;
