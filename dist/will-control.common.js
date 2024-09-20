@@ -32029,6 +32029,7 @@ function openCalendar(src) {
 			}
 		});
 		dpkr.datepicker("show");
+		jquery_default()(document).off('focusin');
 		return;
 	}catch (ex)	{ console.error(ex); }
 }
@@ -32121,7 +32122,7 @@ function putComma(data) {
 	} 
 	return data; 
 } 
-function clearComma(data){ 
+function clearComma(data) { 
 	while (data.indexOf(',')!=-1) { 
 		data = data.replace(',',''); 
 	} 
@@ -32152,11 +32153,13 @@ function setCaretPosition(ctrl, iCaretPos) {
 		ctrl.focus ();
 	}
 }
-function parseNumber(avalue) { 
+function parseNumber(avalue) {
+	if(!avalue) return 0;
 	return Number(removeComma(avalue)); 
 } 		  
-function removeComma(avalue) { 
-	let result = avalue ; 
+function removeComma(avalue) {
+	if(!avalue) return avalue; 
+	let result = avalue+""; 
 	while ( result.indexOf(",") > -1 ) { 
 		result = removeDelimiter(result,",");	} 
 	return result; 
