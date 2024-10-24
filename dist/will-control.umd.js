@@ -31829,21 +31829,21 @@ var exportHelper = __webpack_require__(262);
 const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataPagingvue_type_script_lang_js, [['render',render]])
 
 /* harmony default export */ const DataPaging = (__exports__);
-;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=template&id=43bbd180
+;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=template&id=11d0b17c
 
 
-const DataTablevue_type_template_id_43bbd180_hoisted_1 = { class: "data-table table table-bordered table-hover table-striped tablesorter" }
-const DataTablevue_type_template_id_43bbd180_hoisted_2 = { class: "data-table-header" }
-const DataTablevue_type_template_id_43bbd180_hoisted_3 = {
+const DataTablevue_type_template_id_11d0b17c_hoisted_1 = { class: "data-table table table-bordered table-hover table-striped tablesorter" }
+const DataTablevue_type_template_id_11d0b17c_hoisted_2 = { class: "data-table-header" }
+const DataTablevue_type_template_id_11d0b17c_hoisted_3 = {
   key: 0,
   class: "text-center th-sequence"
 }
-const DataTablevue_type_template_id_43bbd180_hoisted_4 = {
+const DataTablevue_type_template_id_11d0b17c_hoisted_4 = {
   key: 0,
   class: "text-center th-data"
 }
-const DataTablevue_type_template_id_43bbd180_hoisted_5 = ["innerHTML"]
-const DataTablevue_type_template_id_43bbd180_hoisted_6 = {
+const DataTablevue_type_template_id_11d0b17c_hoisted_5 = ["innerHTML"]
+const DataTablevue_type_template_id_11d0b17c_hoisted_6 = {
   key: 1,
   class: "text-center th-data"
 }
@@ -31872,24 +31872,25 @@ const _hoisted_16 = {
   class: "text-center"
 }
 const _hoisted_17 = ["onClick"]
-const _hoisted_18 = { key: 1 }
-const _hoisted_19 = ["colspan"]
+const _hoisted_18 = ["onClick"]
+const _hoisted_19 = { key: 1 }
+const _hoisted_20 = ["colspan"]
 
-function DataTablevue_type_template_id_43bbd180_render(_ctx, _cache, $props, $setup, $data, $options) {
+function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_A = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveComponent)("A")
 
-  return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("table", DataTablevue_type_template_id_43bbd180_hoisted_1, [
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("thead", DataTablevue_type_template_id_43bbd180_hoisted_2, [
+  return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("table", DataTablevue_type_template_id_11d0b17c_hoisted_1, [
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("thead", DataTablevue_type_template_id_11d0b17c_hoisted_2, [
       (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("tr", null, [
         ($options.hasSequence)
-          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_43bbd180_hoisted_3, [
+          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_3, [
               (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("label", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.labels[$setup.headers.sequence.label]), 1)
             ]))
           : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true),
         ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($setup.headers.columns, (item, index) => {
           return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, { key: index }, [
             (item.sorter)
-              ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_43bbd180_hoisted_4, [
+              ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_4, [
                   (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(_component_A, {
                     href: "javascript:void(0)",
                     class: "alink-sorter fa-data-sort",
@@ -31898,12 +31899,12 @@ function DataTablevue_type_template_id_43bbd180_render(_ctx, _cache, $props, $se
                     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [
                       (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("label", {
                         innerHTML: $props.labels[item.label]
-                      }, null, 8, DataTablevue_type_template_id_43bbd180_hoisted_5)
+                      }, null, 8, DataTablevue_type_template_id_11d0b17c_hoisted_5)
                     ]),
                     _: 2
                   }, 1032, ["onClick"])
                 ]))
-              : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_43bbd180_hoisted_6, [
+              : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_6, [
                   (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("label", {
                     innerHTML: $props.labels[item.label]
                   }, null, 8, _hoisted_7)
@@ -31947,38 +31948,79 @@ function DataTablevue_type_template_id_43bbd180_render(_ctx, _cache, $props, $se
                 ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("td", _hoisted_16, [
                     ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderList)($setup.headers.actions, (action, actionIndex) => {
                       return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, { key: actionIndex }, [
-                        (action.type=='button')
-                          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("button", {
-                              key: 0,
-                              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.css),
-                              onClick: $event => ($options.dataSelect(item,action.action))
-                            }, [
-                              (action.icon)
-                                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
-                                    key: 0,
-                                    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.icon)
-                                  }, null, 2))
+                        (action.render)
+                          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, { key: 0 }, [
+                              ((_ctx.actioner = action.render(item)))
+                                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, { key: 0 }, [
+                                    (_ctx.actioner.type=='button')
+                                      ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("button", {
+                                          key: 0,
+                                          class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(_ctx.actioner.css),
+                                          onClick: $event => ($options.dataSelect(item,_ctx.actioner.action))
+                                        }, [
+                                          (_ctx.actioner.icon)
+                                            ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
+                                                key: 0,
+                                                class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(_ctx.actioner.icon)
+                                              }, null, 2))
+                                            : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                                        ], 10, _hoisted_17))
+                                      : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true),
+                                    (_ctx.actioner.type=='a')
+                                      ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_A, {
+                                          key: 1,
+                                          href: "javascript:void(0)",
+                                          class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["alink-action", _ctx.actioner.css]),
+                                          onClick: $event => ($options.dataSelect(item,_ctx.actioner.action))
+                                        }, {
+                                          default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [
+                                            (_ctx.actioner.icon)
+                                              ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
+                                                  key: 0,
+                                                  class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(_ctx.actioner.icon)
+                                                }, null, 2))
+                                              : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                                          ]),
+                                          _: 2
+                                        }, 1032, ["class", "onClick"]))
+                                      : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                                  ], 64))
                                 : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
-                            ], 10, _hoisted_17))
-                          : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true),
-                        (action.type=='a')
-                          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_A, {
-                              key: 1,
-                              href: "javascript:void(0)",
-                              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["alink-action", action.css]),
-                              onClick: $event => ($options.dataSelect(item,action.action))
-                            }, {
-                              default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [
-                                (action.icon)
-                                  ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
-                                      key: 0,
-                                      class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.icon)
-                                    }, null, 2))
-                                  : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
-                              ]),
-                              _: 2
-                            }, 1032, ["class", "onClick"]))
-                          : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                            ], 64))
+                          : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, { key: 1 }, [
+                              (action.type=='button')
+                                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("button", {
+                                    key: 0,
+                                    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.css),
+                                    onClick: $event => ($options.dataSelect(item,action.action))
+                                  }, [
+                                    (action.icon)
+                                      ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
+                                          key: 0,
+                                          class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.icon)
+                                        }, null, 2))
+                                      : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                                  ], 10, _hoisted_18))
+                                : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true),
+                              (action.type=='a')
+                                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_A, {
+                                    key: 1,
+                                    href: "javascript:void(0)",
+                                    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["alink-action", action.css]),
+                                    onClick: $event => ($options.dataSelect(item,action.action))
+                                  }, {
+                                    default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [
+                                      (action.icon)
+                                        ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("em", {
+                                            key: 0,
+                                            class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(action.icon)
+                                          }, null, 2))
+                                        : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                                    ]),
+                                    _: 2
+                                  }, 1032, ["class", "onClick"]))
+                                : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
+                            ], 64))
                       ], 64))
                     }), 128))
                   ]))
@@ -31987,17 +32029,17 @@ function DataTablevue_type_template_id_43bbd180_render(_ctx, _cache, $props, $se
           }), 128))
         : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true),
       ($options.recordNotFound)
-        ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("tr", _hoisted_18, [
+        ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("tr", _hoisted_19, [
             (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("td", {
               class: "text-center",
               colspan: $options.columnCount
-            }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.labels.record_notfound), 9, _hoisted_19)
+            }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.labels.record_notfound), 9, _hoisted_20)
           ]))
         : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)
     ])
   ]))
 }
-;// CONCATENATED MODULE: ./src/controls/DataTable.vue?vue&type=template&id=43bbd180
+;// CONCATENATED MODULE: ./src/controls/DataTable.vue?vue&type=template&id=11d0b17c
 
 // EXTERNAL MODULE: ./src/assets/js/Utilities.js
 var Utilities = __webpack_require__(406);
@@ -32383,7 +32425,7 @@ function formatDataTable(data,field) {
 
 
 ;
-const DataTable_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataTablevue_type_script_lang_js, [['render',DataTablevue_type_template_id_43bbd180_render]])
+const DataTable_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataTablevue_type_script_lang_js, [['render',DataTablevue_type_template_id_11d0b17c_render]])
 
 /* harmony default export */ const DataTable = (DataTable_exports_);
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/InputDate.vue?vue&type=template&id=0a48961d

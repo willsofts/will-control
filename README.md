@@ -115,7 +115,12 @@ const tableSettings = {
         {type: "button", action: "edit", css: "btn-edit fa-data-edit"},
         {type: "button", action: "delete", css: "btn-delete fa-data-delete"}
         {type: "button", action: "view", css: "btn-view fa-data-view"},
-        {type: "a", action: "show", css: "fa-data-show", icon: "fa fa-eye"}
+        {type: "a", action: "show", css: "fa-data-show", icon: "fa fa-eye"},
+        { 
+          render: function(record) { 
+            return record.gender=="M" ? { type: "a", action: "view", css: "btn-view fa-data-view", icon: "fa fa-eye" } : {};
+          }
+        }
     ],
 };
 ```
@@ -147,6 +152,7 @@ const tableSettings = {
 | action | string | **required** | To take action handler, reserved for `edit`, `delete`, `view` has own css style |
 | css | string | `undefined` | css classes |
 | icon | string | `undefined` | css class awesome font |
+| render | Function | `undefined` | accept data item as parameter and return Action Setting required properties |
 
 
 #### On Data Selected
