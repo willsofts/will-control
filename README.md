@@ -131,6 +131,7 @@ const tableSettings = {
 | sequence | boolean or Object label setting | `undefined` | To display sequence no. |
 | columns | [ColumnSetting](#column-setting) | **required** | To defined colum setting. |
 | actions | [ActionSetting](#action-setting) | `undefined` | To defined mark up actions. |
+| defaultAction | boolean or string | `edit` | To defined default action when select row or `false` to disabled |
 
 
 #### Column Setting

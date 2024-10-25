@@ -31615,7 +31615,7 @@ var jquery_default = /*#__PURE__*/__webpack_require__.n(jquery);
 
 ;// CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 const external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = require("vue");
-;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataPaging.vue?vue&type=template&id=1ccfa32a
+;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataPaging.vue?vue&type=template&id=b2afacbe
 
 
 const _hoisted_1 = { class: "fschaptertablelayer" }
@@ -31623,7 +31623,6 @@ const _hoisted_2 = { class: "fschaptertable" }
 const _hoisted_3 = { class: "fschapterrow" }
 const _hoisted_4 = { class: "fschaptercolumn" }
 const _hoisted_5 = { class: "fschapterlayer" }
-const _hoisted_6 = { class: "page-table-class pagination pagination-sm" }
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_A = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("A")
@@ -31633,16 +31632,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("tr", _hoisted_3, [
         (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("td", _hoisted_4, [
           (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("div", _hoisted_5, [
-            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("ul", _hoisted_6, [
+            (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("ul", {
+              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.pageCSS.ulCSS)
+            }, [
               ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderList)($setup.pager, (item, index) => {
                 return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("li", {
                   key: index,
-                  class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["page-item page-column-class", item.css])
+                  class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)([$setup.pageCSS.liCSS, item.css])
                 }, [
                   (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)(_component_A, {
                     HREF: "javascript:void(0)",
                     onClick: $event => ($options.pageSelect(item)),
-                    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["page-link pagenoclass fa-data-page", item.css]),
+                    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)([$setup.pageCSS.aCSS, item.css]),
                     "data-paging": item.page
                   }, {
                     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.withCtx)(() => [
@@ -31652,14 +31653,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, 1032, ["onClick", "class", "data-paging"])
                 ], 2))
               }), 128))
-            ])
+            ], 2)
           ])
         ])
       ])
     ])
   ]))
 }
-;// CONCATENATED MODULE: ./src/controls/DataPaging.vue?vue&type=template&id=1ccfa32a
+;// CONCATENATED MODULE: ./src/controls/DataPaging.vue?vue&type=template&id=b2afacbe
 
 ;// CONCATENATED MODULE: ./src/assets/js/Paging.js
 
@@ -31770,16 +31771,24 @@ class Paging {
 
 
 
+const defaultCSS = {
+  ulCSS: "page-table-class pagination pagination-sm",
+  liCSS: "page-item page-column-class",
+  aCSS: "page-link pagenoclass fa-data-page"
+};
+
 /* harmony default export */ const DataPagingvue_type_script_lang_js = ({
   props: {
-    settings: Object
+    settings: Object,
+    css: Object,
   },
   emits: ["page-select"],
   setup(props) {
     let paging = new Paging(props.settings);
     let model = paging.buildPagingModel();
     let pager = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)(model);
-    return { paging, pager };
+    let pageCSS = {...defaultCSS, ...props.css};
+    return { paging, pager, pageCSS };
   },
   methods: {
     clear() {
@@ -31811,68 +31820,63 @@ var exportHelper = __webpack_require__(262);
 const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataPagingvue_type_script_lang_js, [['render',render]])
 
 /* harmony default export */ const DataPaging = (__exports__);
-;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=template&id=11d0b17c
+;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=template&id=134949d6
 
 
-const DataTablevue_type_template_id_11d0b17c_hoisted_1 = { class: "data-table table table-bordered table-hover table-striped tablesorter" }
-const DataTablevue_type_template_id_11d0b17c_hoisted_2 = { class: "data-table-header" }
-const DataTablevue_type_template_id_11d0b17c_hoisted_3 = {
-  key: 0,
-  class: "text-center th-sequence"
-}
-const DataTablevue_type_template_id_11d0b17c_hoisted_4 = {
-  key: 0,
-  class: "text-center th-data"
-}
-const DataTablevue_type_template_id_11d0b17c_hoisted_5 = ["innerHTML"]
-const DataTablevue_type_template_id_11d0b17c_hoisted_6 = {
-  key: 1,
-  class: "text-center th-data"
-}
-const _hoisted_7 = ["innerHTML"]
-const _hoisted_8 = {
-  key: 1,
-  class: "text-center th-action"
-}
-const _hoisted_9 = /*#__PURE__*/(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("em", {
+const DataTablevue_type_template_id_134949d6_hoisted_1 = ["innerHTML"]
+const DataTablevue_type_template_id_134949d6_hoisted_2 = ["innerHTML"]
+const DataTablevue_type_template_id_134949d6_hoisted_3 = /*#__PURE__*/(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("em", {
   class: "fa fa-bolt",
   "aria-hidden": "true"
 }, null, -1)
-const _hoisted_10 = [
-  _hoisted_9
+const DataTablevue_type_template_id_134949d6_hoisted_4 = [
+  DataTablevue_type_template_id_134949d6_hoisted_3
 ]
-const _hoisted_11 = { class: "data-table-body" }
-const _hoisted_12 = {
+const DataTablevue_type_template_id_134949d6_hoisted_5 = {
   key: 0,
   class: "text-center"
 }
-const _hoisted_13 = ["onClick"]
-const _hoisted_14 = ["innerHTML"]
-const _hoisted_15 = { key: 1 }
-const _hoisted_16 = {
+const _hoisted_6 = ["onClick"]
+const _hoisted_7 = ["innerHTML"]
+const _hoisted_8 = { key: 1 }
+const _hoisted_9 = ["innerHTML"]
+const _hoisted_10 = { key: 1 }
+const _hoisted_11 = {
   key: 1,
   class: "text-center"
 }
-const _hoisted_17 = ["onClick"]
-const _hoisted_18 = ["onClick"]
-const _hoisted_19 = { key: 1 }
-const _hoisted_20 = ["colspan"]
+const _hoisted_12 = ["onClick"]
+const _hoisted_13 = ["onClick"]
+const _hoisted_14 = { key: 1 }
+const _hoisted_15 = ["colspan"]
 
-function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $setup, $data, $options) {
+function DataTablevue_type_template_id_134949d6_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_A = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.resolveComponent)("A")
 
-  return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("table", DataTablevue_type_template_id_11d0b17c_hoisted_1, [
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("thead", DataTablevue_type_template_id_11d0b17c_hoisted_2, [
-      (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("tr", null, [
+  return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("table", {
+    class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.tableCSS)
+  }, [
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("thead", {
+      class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headCSS)
+    }, [
+      (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("tr", {
+        class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headRowCSS)
+      }, [
         ($options.hasSequence)
-          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_3, [
+          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", {
+              key: 0,
+              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headSeqCSS)
+            }, [
               (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("label", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.labels[$setup.headers.sequence.label]), 1)
-            ]))
+            ], 2))
           : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true),
         ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderList)($setup.headers.columns, (item, index) => {
           return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, { key: index }, [
             (item.sorter)
-              ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_4, [
+              ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", {
+                  key: 0,
+                  class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headColCSS)
+                }, [
                   (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createVNode)(_component_A, {
                     href: "javascript:void(0)",
                     class: "alink-sorter fa-data-sort",
@@ -31881,29 +31885,40 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.withCtx)(() => [
                       (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("label", {
                         innerHTML: $props.labels[item.label]
-                      }, null, 8, DataTablevue_type_template_id_11d0b17c_hoisted_5)
+                      }, null, 8, DataTablevue_type_template_id_134949d6_hoisted_1)
                     ]),
                     _: 2
                   }, 1032, ["onClick"])
-                ]))
-              : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", DataTablevue_type_template_id_11d0b17c_hoisted_6, [
+                ], 2))
+              : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", {
+                  key: 1,
+                  class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headColCSS)
+                }, [
                   (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("label", {
                     innerHTML: $props.labels[item.label]
-                  }, null, 8, _hoisted_7)
-                ]))
+                  }, null, 8, DataTablevue_type_template_id_134949d6_hoisted_2)
+                ], 2))
           ], 64))
         }), 128)),
         ($options.hasActions)
-          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", _hoisted_8, _hoisted_10))
+          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("th", {
+              key: 1,
+              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.headActionCSS)
+            }, DataTablevue_type_template_id_134949d6_hoisted_4, 2))
           : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)
-      ])
-    ]),
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("tbody", _hoisted_11, [
+      ], 2)
+    ], 2),
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("tbody", {
+      class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.bodyCSS)
+    }, [
       ($options.hasDataSet)
         ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, { key: 0 }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderList)($setup.datas?.rows, (item, index) => {
-            return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("tr", { key: index }, [
+            return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("tr", {
+              key: index,
+              class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)($setup.headers.rowCSS)
+            }, [
               ($options.hasSequence)
-                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("td", _hoisted_12, [
+                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("td", DataTablevue_type_template_id_134949d6_hoisted_5, [
                     (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("label", null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($setup.page.recordsNumber(index+1)), 1)
                   ]))
                 : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true),
@@ -31912,22 +31927,32 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                   key: colIndex,
                   class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(column.css)
                 }, [
-                  (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("a", {
-                    href: "javascript:void(0)",
-                    class: "alink-data fa-data-edit",
-                    onClick: $event => ($options.dataSelect(item))
-                  }, [
-                    (column.unescape)
-                      ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", {
-                          key: 0,
-                          innerHTML: $options.formatData(item[column.name],column,item)
-                        }, null, 8, _hoisted_14))
-                      : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", _hoisted_15, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($options.formatData(item[column.name],column,item)), 1))
-                  ], 8, _hoisted_13)
+                  ($setup.headers.defaultAction)
+                    ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("a", {
+                        key: 0,
+                        href: "javascript:void(0)",
+                        class: "alink-data fa-data-edit",
+                        onClick: $event => ($options.dataSelect(item,$setup.headers.defaultAction))
+                      }, [
+                        (column.unescape)
+                          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", {
+                              key: 0,
+                              innerHTML: $options.formatData(item[column.name],column,item)
+                            }, null, 8, _hoisted_7))
+                          : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", _hoisted_8, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($options.formatData(item[column.name],column,item)), 1))
+                      ], 8, _hoisted_6))
+                    : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, { key: 1 }, [
+                        (column.unescape)
+                          ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", {
+                              key: 0,
+                              innerHTML: $options.formatData(item[column.name],column,item)
+                            }, null, 8, _hoisted_9))
+                          : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("span", _hoisted_10, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($options.formatData(item[column.name],column,item)), 1))
+                      ], 64))
                 ], 2))
               }), 128)),
               ($options.hasActions)
-                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("td", _hoisted_16, [
+                ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("td", _hoisted_11, [
                     ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(true), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, null, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderList)($setup.headers.actions, (action, actionIndex) => {
                       return ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, { key: actionIndex }, [
                         (action.render)
@@ -31938,7 +31963,7 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                                       ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("button", {
                                           key: 0,
                                           class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(_ctx.actioner.css),
-                                          onClick: $event => ($options.dataSelect(item,_ctx.actioner.action))
+                                          onClick: $event => ($options.dataSelect(item,action.render(item).action))
                                         }, [
                                           (_ctx.actioner.icon)
                                             ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("em", {
@@ -31946,14 +31971,14 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                                                 class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(_ctx.actioner.icon)
                                               }, null, 2))
                                             : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)
-                                        ], 10, _hoisted_17))
+                                        ], 10, _hoisted_12))
                                       : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true),
                                     (_ctx.actioner.type=='a')
                                       ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createBlock)(_component_A, {
                                           key: 1,
                                           href: "javascript:void(0)",
                                           class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["alink-action", _ctx.actioner.css]),
-                                          onClick: $event => ($options.dataSelect(item,_ctx.actioner.action))
+                                          onClick: $event => ($options.dataSelect(item,action.render(item).action))
                                         }, {
                                           default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.withCtx)(() => [
                                             (_ctx.actioner.icon)
@@ -31982,7 +32007,7 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                                           class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(action.icon)
                                         }, null, 2))
                                       : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)
-                                  ], 10, _hoisted_18))
+                                  ], 10, _hoisted_13))
                                 : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true),
                               (action.type=='a')
                                 ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createBlock)(_component_A, {
@@ -32007,21 +32032,21 @@ function DataTablevue_type_template_id_11d0b17c_render(_ctx, _cache, $props, $se
                     }), 128))
                   ]))
                 : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)
-            ]))
+            ], 2))
           }), 128))
         : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true),
       ($options.recordNotFound)
-        ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("tr", _hoisted_19, [
+        ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("tr", _hoisted_14, [
             (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementVNode)("td", {
               class: "text-center",
               colspan: $options.columnCount
-            }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.labels.record_notfound), 9, _hoisted_20)
+            }, (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.labels.record_notfound), 9, _hoisted_15)
           ]))
         : (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)
-    ])
-  ]))
+    ], 2)
+  ], 2))
 }
-;// CONCATENATED MODULE: ./src/controls/DataTable.vue?vue&type=template&id=11d0b17c
+;// CONCATENATED MODULE: ./src/controls/DataTable.vue?vue&type=template&id=134949d6
 
 // EXTERNAL MODULE: ./src/assets/js/Utilities.js
 var Utilities = __webpack_require__(406);
@@ -32277,7 +32302,10 @@ function formatDecimal(avalue,decimal,verifydecimal) {
 
 const header_action = { type: "button", action: "edit" };
 function ensureTableSetting(settings) {
-    let headers = {autoFormat: true, ...settings};
+    let headers = { autoFormat: true, defaultAction: "edit", 
+		tableCSS:"data-table table table-bordered table-hover table-striped tablesorter", bodyCSS: "data-table-body", rowCSS: "", 
+		headCSS: "data-table-header", headRowCSS: "", headColCSS: "text-center th-data", headSeqCSS: "text-center th-sequence", headActionCSS: "text-center th-action",
+		...settings };
     if(headers.actions) {
         for(let act of headers.actions) {
             let item = {...header_action, ...act};
@@ -32371,7 +32399,7 @@ function formatDataTable(data,field) {
         this.page.reset(newData?.offsets);
       }
     },
-    dataSelect(item,action='edit') {
+    dataSelect(item,action) {
       this.$emit('data-select', item,action);
     },
     getDirection(orderDir) {
@@ -32407,7 +32435,7 @@ function formatDataTable(data,field) {
 
 
 ;
-const DataTable_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataTablevue_type_script_lang_js, [['render',DataTablevue_type_template_id_11d0b17c_render]])
+const DataTable_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(DataTablevue_type_script_lang_js, [['render',DataTablevue_type_template_id_134949d6_render]])
 
 /* harmony default export */ const DataTable = (DataTable_exports_);
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/InputDate.vue?vue&type=template&id=0a48961d
