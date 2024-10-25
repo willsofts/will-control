@@ -1483,4 +1483,6 @@ a.ui-button:active,
 
 .item-selected { text-decoration: underline;
 }
+.build-version { font-size: 0.9rem;
+}
 
