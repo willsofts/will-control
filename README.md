@@ -187,7 +187,7 @@ Using bind event `:data-sort`
 Using property `:formater`
 
 ```javascript
-    formatData(data,field) {
+    formatData(data,field,record) {
       if(field.name=="gender") {
         if("M"==data) {
           //return this.labels.male_label; //"Male";
@@ -198,7 +198,7 @@ Using property `:formater`
         } else return data;  
       }
       //return default data format handler
-      return this.$refs.dataTable.formatField(data,field);
+      return this.$refs.dataTable.formatField(data,field,record);
     },    
 ```
 
