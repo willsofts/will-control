@@ -1,6 +1,6 @@
 {
   "name": "@willsofts/will-control",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "Vue Application Controls",
   "main": "dist/will-control.umd.js",
   "scripts": {
