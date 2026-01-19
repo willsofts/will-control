@@ -29840,8 +29840,7 @@ class Utilities {
      * @returns string
      */
     static getDateNow(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         return this.formatDate(now, false);
     }
     /**
@@ -29850,15 +29849,7 @@ class Utilities {
      * @returns string
      */
     static getTimeNow(now) {
-        if (!now)
-            now = new Date();
-        let hh = now.getHours();
-        let mm = now.getMinutes();
-        let ss = now.getSeconds();
-        let result = ((hh < 10) ? "0" : "") + hh;
-        result += ((mm < 10) ? ":0" : ":") + mm;
-        result += ((ss < 10) ? ":0" : ":") + ss;
-        return result;
+        return this.currentTime(now);
     }
     /**
      * To get datetime in format dd/MM/yyyy HH:mm:ss
@@ -29866,8 +29857,7 @@ class Utilities {
      * @returns string
      */
     static getDateTimeNow(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         return this.getDateNow(now) + " " + this.getTimeNow(now);
     }
     /**
@@ -29948,8 +29938,7 @@ class Utilities {
      * @returns string
      */
     static currentDate(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         let dd = now.getDate();
         let mm = now.getMonth() + 1;
         let yy = now.getFullYear();
@@ -29964,8 +29953,7 @@ class Utilities {
      * @returns string
      */
     static currentTime(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         let hh = now.getHours();
         let mm = now.getMinutes();
         let ss = now.getSeconds();
@@ -29980,8 +29968,7 @@ class Utilities {
      * @returns string
      */
     static currentDateTime(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         return this.currentDate(now) + " " + this.currentTime(now);
     }
     /**
@@ -29990,8 +29977,7 @@ class Utilities {
      * @returns number
      */
     static currentTimeMillis(now) {
-        if (!now)
-            now = new Date();
+        now = now ?? new Date();
         return now.getTime();
     }
     /**
@@ -30001,8 +29987,7 @@ class Utilities {
      * @returns Date
      */
     static addDays(days, date) {
-        if (!date)
-            date = new Date();
+        date = date ?? new Date();
         let result = new Date(date);
         result.setDate(result.getDate() + days);
         return result;
@@ -30077,7 +30062,7 @@ class Utilities {
      * @returns boolean
      */
     static isString(value) {
-        return typeof value === 'string' || value instanceof String;
+        return typeof value === 'string' || Object.prototype.toString.call(value) === '[object String]';
     }
     /**
      * To parse integer (especially from string)
@@ -30088,12 +30073,10 @@ class Utilities {
     static parseInteger(dataValue, defaultValue) {
         if (dataValue) {
             if (this.isString(dataValue)) {
-                return parseInt(dataValue.replaceAll(',', ''));
+                return Number.parseInt(dataValue.replaceAll(',', ''));
             }
-            else {
-                if (typeof dataValue === "number") {
-                    return dataValue;
-                }
+            else if (typeof dataValue === "number") {
+                return dataValue;
             }
         }
         return defaultValue;
@@ -30107,12 +30090,10 @@ class Utilities {
     static parseFloat(dataValue, defaultValue) {
         if (dataValue) {
             if (this.isString(dataValue)) {
-                return parseFloat(dataValue.replaceAll(',', ''));
+                return Number.parseFloat(dataValue.replaceAll(',', ''));
             }
-            else {
-                if (typeof dataValue === "number") {
-                    return dataValue;
-                }
+            else if (typeof dataValue === "number") {
+                return dataValue;
             }
         }
         return defaultValue;
@@ -30133,10 +30114,8 @@ class Utilities {
                     return false;
                 return Boolean(pr);
             }
-            else {
-                if (typeof dataValue === "boolean") {
-                    return dataValue;
-                }
+            else if (typeof dataValue === "boolean") {
+                return dataValue;
             }
         }
         return defaultValue;
@@ -30148,68 +30127,87 @@ class Utilities {
      * @returns Date
      */
     static parseDate(dataValue, defaultValue) {
-        if (dataValue) {
-            if (this.isString(dataValue)) {
-                let datestr = ("" + dataValue).trim();
-                if (datestr != "") {
-                    if (datestr.indexOf("T") > 0 && datestr.indexOf("Z") > 0) {
-                        try { const dateInstance = new Date(datestr); if(dateInstance) return dateInstance; } catch(ex) { console.error(ex); }
-                    }
-                    let result = undefined;
-                    let separator = " ";
-                    if (datestr.indexOf("T") > 0)
-                        separator = "T";
-                    let [date, time] = datestr.split(separator);
-                    if (date.indexOf(":") > 0) {
-                        time = date;
-                        date = "";
-                    }
-                    if (date) {
-                        if (date.indexOf("/") > 0) {
-                            let [day, month, year] = date.split('/');
-                            result = new Date(Number(year), Number(month) - 1, Number(day));
-                        }
-                        else if (date.indexOf("-") > 0) {
-                            let [year, month, day] = date.split('-');
-                            result = new Date(Number(year), Number(month) - 1, Number(day));
-                        }
-                    }
-                    if (time) {
-                        if (!result)
-                            result = new Date();
-                        let [hours, minutes, seconds] = time.split(':');
-                        if (hours !== undefined)
-                            result.setHours(Number(hours));
-                        if (minutes !== undefined)
-                            result.setMinutes(Number(minutes));
-                        if (seconds !== undefined) {
-                            if (seconds.indexOf(".") > 0) {
-                                let [sec, msec] = seconds.split(".");
-                                result.setSeconds(Number(sec));
-                                let idx = msec.indexOf("Z");
-                                if (idx > 0) {
-                                    msec = msec.substring(0, idx);
-                                }
-                                result.setMilliseconds(Number(msec));
-                            }
-                            else {
-                                result.setSeconds(Number(seconds));
-                            }
-                        }
-                        else {
-                            result.setSeconds(0);
-                        }
-                    }
-                    return result;
-                }
+        if (!dataValue)
+            return defaultValue;
+        if (dataValue instanceof Date) {
+            return dataValue;
+        }
+        if (!this.isString(dataValue))
+            return defaultValue;
+        let datestr = ("" + dataValue).trim();
+        if (!datestr)
+            return defaultValue;
+        return this.parseIsoDate(datestr) ?? this.parseCustomDate(datestr) ?? defaultValue;
+    }
+    static parseIsoDate(datestr) {
+        if (datestr.includes("T") && datestr.includes("Z")) {
+            try {
+                const dateInstance = new Date(datestr);
+                if (!Number.isNaN(dateInstance.valueOf()))
+                    return dateInstance;
             }
-            else {
-                if (dataValue instanceof Date) {
-                    return dataValue;
-                }
+            catch (ex) {
+                console.warn(ex);
             }
         }
-        return defaultValue;
+        return undefined;
+    }
+    static parseCustomDate(datestr) {
+        let result = undefined;
+        let separator = " ";
+        if (datestr.includes("T"))
+            separator = "T";
+        let [date, time] = datestr.split(separator);
+        if (date.includes(":")) {
+            time = date;
+            date = "";
+        }
+        if (date) {
+            if (date.includes("/")) {
+                let [day, month, year] = date.split('/');
+                result = new Date(Number(year), Number(month) - 1, Number(day));
+            }
+            else if (date.includes("-")) {
+                let [year, month, day] = date.split('-');
+                result = new Date(Number(year), Number(month) - 1, Number(day));
+            }
+        }
+        return this.parseCustomTime(result, time);
+    }
+    static parseCustomTime(date, time) {
+        let result = date;
+        if (time) {
+            result = result ?? new Date();
+            let [hours, minutes, seconds] = time.split(':');
+            if (hours)
+                result.setHours(Number(hours));
+            if (minutes)
+                result.setMinutes(Number(minutes));
+            if (seconds) {
+                result = this.parseCustomSecond(result, seconds);
+            }
+            else {
+                result.setSeconds(0);
+            }
+        }
+        return result;
+    }
+    static parseCustomSecond(date, seconds) {
+        if (seconds.includes(".")) {
+            let [sec, msec] = seconds.split(".");
+            date.setSeconds(Number(sec));
+            let idx = msec.indexOf("Z");
+            if (idx > 0) {
+                msec = msec.substring(0, idx);
+            }
+            if (msec.length > 3)
+                msec = msec.substring(0, 3);
+            date.setMilliseconds(Number(msec));
+        }
+        else {
+            date.setSeconds(Number(seconds));
+        }
+        return date;
     }
     /**
      * To parse time with data value string in format HH:mm:ss
@@ -30343,6 +30341,30 @@ class Utilities {
         let weekday = this.getWeekDay(date, fortype);
         let result = this.getFormatDate(date, fortype, delimiter, forstyle, separater);
         return weekday + separater + delimiter + result;
+    }
+    /**
+     * To get date instance from string or number of timestamp
+     * @returns string
+     */
+    static date(input, defaultValue) {
+        if (input) {
+            if (typeof input == 'string') {
+                let value = this.parseInteger(input);
+                if (value)
+                    return new Date(value);
+            }
+            if (typeof input == 'number') {
+                return new Date(input);
+            }
+        }
+        return defaultValue ?? new Date();
+    }
+    /**
+     * To verify it has value
+     * @returns boolean
+     */
+    static hasValue(val) {
+        return val !== undefined && val !== null && val !== "";
     }
 }
 exports.F = Utilities;
@@ -31675,103 +31697,115 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 const DEFAULT_PAGE_SETTINGS = { page: 1, rowsPerPage: 10, totalRows: 0, totalPages: 1, limit: 10, offset: 10, rows: 0 };
 
 class Paging {
-    constructor(setting = { }) {
-        this.setting = Object.assign({},DEFAULT_PAGE_SETTINGS,setting);
+    setting;
+    constructor(setting = {}) {
+        this.setting = { ...DEFAULT_PAGE_SETTINGS, ...setting };
     }
-
     clear() {
         this.reset(DEFAULT_PAGE_SETTINGS);
     }
-
     reset(setting) {
         if (setting) {
-            this.setting = Object.assign(this.setting,setting);
+            this.setting = { ...this.setting, ...setting };
         }
     }
-
     hasPaging(rows) {
-        if(!rows) rows = this.setting.totalRows;
+        if (!rows)
+            rows = this.setting.totalRows;
         let chapter = this.setting.rowsPerPage;
         return (chapter > 0) && (rows > chapter);
     }
-
     recordsOffset() {
         let page = this.setting.page - 1;
         let chapter = this.setting.rowsPerPage;
-        if(page>0) return page*chapter;
+        if (page > 0)
+            return page * chapter;
         return 0;
     }
-
     recordsNumber(seqno) {
         return seqno + this.recordsOffset();
     }
-
-    buildPagingModel(options = {totalRows: 0 }) {
-        let results = [];
-        let fsRows = options.totalRows;
-        if (!fsRows) {
-            fsRows = this.setting.totalRows;
+    buildPagingModel(opts) {
+        const options = opts ?? { totalRows: 0 };
+        const results = [];
+        const totalRows = this.resolveTotalRows(options.totalRows);
+        const totalPages = this.calculateTotalPages(totalRows);
+        const pagingRange = this.calculatePagingRange();
+        this.addFirstAndPrevious(results, pagingRange);
+        this.addPageNumbers(results, totalRows, totalPages, pagingRange);
+        this.addLast(results, totalRows, pagingRange);
+        return results;
+    }
+    resolveTotalRows(totalRows) {
+        return totalRows || this.setting.totalRows;
+    }
+    calculateTotalPages(totalRows) {
+        let pages = 0;
+        for (let i = 0; i < totalRows; i += this.setting.rowsPerPage) {
+            pages++;
         }
-        let fsPageNumber = 0;
-        let fsPageNo = 0;
-        let fsTotalPage = 0;
-        let fsPages = this.setting.page;
-        let fsChapters = this.setting.rowsPerPage;
-        for (let i = 0; i < fsRows; i += fsChapters) {
-            fsTotalPage++;
+        return pages;
+    }
+    calculatePagingRange() {
+        let pages = this.setting.page;
+        let chapters = this.setting.rowsPerPage;
+        let limit = this.setting.limit <= 0 ? chapters : this.setting.limit;
+        let counter = 0;
+        let startIdx = pages;
+        while (startIdx > limit) {
+            counter++;
+            startIdx -= limit;
         }
-        let fsCounter = 0;
-        let fsStartIdx = fsPages;
-        let fsLimit = this.setting.limit;
-        if (fsLimit <= 0) {
-            fsLimit = fsChapters;
+        return { pages, chapters, limit, previousPage: counter * limit };
+    }
+    addFirstAndPrevious(results, range) {
+        if (range.limit > 0 && range.pages > range.limit) {
+            results.push({ page: 1, text: "|<", css: "" }, { page: range.previousPage, text: "<<", css: "" });
         }
-        while (fsStartIdx > fsLimit) {
-            fsCounter++;
-            fsStartIdx -= fsLimit;
-        }
-        let fsPreviousPage = fsCounter * fsLimit;
-        if (fsLimit > 0 && (fsPages > fsLimit)) {
-            let first = {page: 1, text: "|<", css: ""};
-            let previous = {page: fsPreviousPage, text: "<<", css: ""};
-            results.push(first);
-            results.push(previous);
-        }
-        for (let i = 0; i < fsRows; i += fsChapters) {
-            fsPageNumber++;
-            if (fsLimit > 0) {
-                if (fsPageNumber <= fsPreviousPage) {
+    }
+    getNextPageNumber(page, totalPages) {
+        let nextPage = page;
+        if (nextPage > totalPages)
+            nextPage = totalPages;
+        return nextPage;
+    }
+    addPageNumbers(results, totalRows, totalPages, range) {
+        let pageNumber = 0;
+        let pageCounter = 0;
+        for (let i = 0; i < totalRows; i += range.chapters) {
+            pageNumber++;
+            if (range.limit > 0) {
+                if (pageNumber <= range.previousPage)
                     continue;
-                }
-                fsPageNo++;
-                if (fsLimit < fsPageNo) {
-                    fsPageNumber = fsPageNumber + fsLimit - 1;
-                    if (fsPageNumber > fsTotalPage) {
-                        fsPageNumber = fsTotalPage;
-                    }
-                    let next = {page: fsPageNumber, text: ">>", css: ""};
-                    results.push(next);
+                pageCounter++;
+                if (range.limit < pageCounter) {
+                    let nextPage = this.getNextPageNumber(pageNumber, totalPages);
+                    results.push({ page: nextPage, text: ">>", css: "" });
                     break;
                 }
             }
-            let fsSelected = "";
-            if (fsPages == fsPageNumber || (fsPageNumber == 1 && fsPages == 0)) {
-                fsSelected = "pageselectedclass active";
-            }
-            let current = {page: fsPageNumber, text: ""+fsPageNumber, css: fsSelected};
-            results.push(current);
+            const selected = range.pages === pageNumber ||
+                (pageNumber === 1 && range.pages === 0)
+                ? "pageselectedclass active"
+                : "";
+            results.push({
+                page: pageNumber,
+                text: String(pageNumber),
+                css: selected
+            });
         }
-        if (fsLimit < fsPageNo) {
-            fsPageNumber = 0;
-            for (let i = 0; i < fsRows; i += fsChapters) {
-                fsPageNumber++;
-            }
-            let last = {page: fsPageNumber, text: ">|", css: ""};
-            results.push(last);
-        }
-        return results;
     }
-
+    addLast(results, totalRows, range) {
+        if (range.limit <= 0)
+            return;
+        let pageCount = 0;
+        for (let i = 0; i < totalRows; i += range.chapters) {
+            pageCount++;
+        }
+        if (range.limit < pageCount) {
+            results.push({ page: pageCount, text: ">|", css: "" });
+        }
+    }
 }
 
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataPaging.vue?vue&type=script&lang=js
@@ -32075,7 +32109,7 @@ function clearCalendar(src) {
 	if(dpkr.is(":disabled")) return;
 	if(dpkr.is("[readonly]")) {
 		let edit = dpkr.attr("editable");
-		if(!("true"==edit)) return;		
+		if ("true" != edit) return;
 	}
 	dpkr.val("");
 	src.dispatchEvent(new Event('select')); 
@@ -32087,7 +32121,7 @@ function openCalendar(src) {
 	if(dpkr.is(":disabled")) return;
 	if(dpkr.is("[readonly]")) {
 		let edit = dpkr.attr("editable");
-		if(!("true"==edit)) return;		
+		if ("true" != edit)	return;
 	}
 	try{ 
 		dpkr.datepicker({
@@ -32111,32 +32145,41 @@ function openCalendar(src) {
 function triggerInput(input) { 
 	input.dispatchEvent(new Event('input', { bubbles: true })); 
 }
-function inputNumberOnly(myfield,e,decimal,isPlus) { 
-	let key; let keychar;  
-	if (e) key = e.which; else return true; 
-	keychar = String.fromCharCode(key); 
-	let element = myfield; 
-	isPlus = ( isPlus != null )? true : false ; 
-	let isPoint= ( decimal != null && decimal != 0 )? true : false ; 
-	if ( key==45 && element.value.indexOf('-')==-1 && !isPlus  ) { 
-		element.value="-"+element.value;
-		triggerInput(element); 
-	} 
-	if ( (key==46) && (element.value.indexOf('.')==-1) && isPoint ) { 
-		if (element.value == "") element.value='0';
-		triggerInput(element); 
-		return true; 
-	} 
-	if ((key==null) || (key==0) || (key==8) || (key==9) || (key==27)) return true; 
-	else if ("0123456789".indexOf(keychar) > -1) {
-		triggerInput(element); 
-		return true; 
-	} else return false; 
-} 
+function inputNumberOnly(myfield, e, decimal, isPlus) {
+    let key;
+    if (e)
+        key = e.which;
+    else
+        return true;
+    let keychar = String.fromCodePoint(key);
+    let element = myfield;
+    isPlus = Boolean(isPlus);
+    let isPoint = decimal !== null && decimal !== undefined && Number(decimal) !== 0;
+    if (key == 45 && !element.value.includes('-') && !isPlus) {
+        element.value = "-" + element.value;
+        triggerInput(element);
+    }
+    if ((key == 46) && !element.value.includes('.') && isPoint) {
+        if (element.value == "")
+            element.value = '0';
+        triggerInput(element);
+        return true;
+    }
+    if ((key == null) || (key == 0) || (key == 8) || (key == 9) || (key == 27))
+        return true;
+    else if ("0123456789".includes(keychar)) {
+        triggerInput(element);
+        return true;
+    }
+    else
+        return false;
+}
 function checkInputNumberOnly(myfield,e,decimal,isPlus) { 
 	let iskeyup = myfield.getAttribute('keyup'); 
-	if ( iskeyup==false){  return false; }  
-	myfield.setAttribute('keyup',false);  
+    if (iskeyup === "false") {
+        return false;
+    }
+    myfield.setAttribute('keyup', "false");
 	return inputNumberOnly(myfield,e,decimal,isPlus);  
 } 
 function checkInputKey(myfield,event,decimal,maxvalue) { 
@@ -32151,58 +32194,67 @@ function checkInputKey(myfield,event,decimal,maxvalue) {
 		triggerInput(myfield);
 	} 
 } 
+function cleansingValues(valueBfChange, fraction, point, data) {
+    data = clearComma(data);
+    try {
+        let dot = '';
+        let x = data.split('.');
+        if (x.length == 2 && point > 0) {
+            dot = (x[1].length > point) ? ('.' + x[1].substring(0, point)) : ('.' + x[1]);
+        }
+        while (x[0].length > 1 && x[0].charAt(0) == "0") {
+            x[0] = x[0].substring(1);
+        }
+        if ((fraction == 0 && Number(x[0]) > 0) || (fraction > 0 && x[0].length > fraction)) {
+            return [valueBfChange, true];
+        }
+        data = x[0] + dot;
+    }
+    catch (ex) {
+        console.error(ex);
+    }
+    return [data, false];
+}
 function formatNumber(element,maxvalue,decimal) { 
-	let valueBfChange = element.value;
-	let data = element.value; 
-	let point = 0 ; 
-	if ( decimal != null && decimal !=  ""  ) { 
-		let precisions = Number(decimal);
-		point = ( precisions >= 0 ) ? precisions : 2;
-	} 
-	let fraction = null ; 
-	if ( maxvalue != null && maxvalue != "" ) { 
-		if ( Number(maxvalue) >= 0 ) { 
-			fraction = maxvalue ; 
-			if ( data.indexOf("-")>-1 )  fraction++; 	
-		} else {
-			fraction = null  ; 
-		}
-	} 
-	data = clearComma(data); 
-	try { 
-		let dot = '' ; 
-		let x = data.split('.'); 
-		if ( x.length == 2 && point > 0 ) { 
-			dot = ( x[1].length > point )?('.'+x[1].substring(0,point)):('.'+x[1]) ; 
-		} 
-		while ( x[0].length > 1 && x[0].charAt(0)=="0" ) { 
-			x[0] = x[0].substring(1);	
-		} 
-		if ( (fraction == 0 && Number(x[0]) > 0 ) || ( fraction > 0 && x[0].length > fraction ) ) { 
-			element.value = valueBfChange ; 
-			return true;	
-		} 
-		data = x[0] + dot; 
-	}catch (ex) { console.error(ex); } 
-	element.value = putComma(data); 
+    let valueBfChange = element.value;
+    let data = element.value;
+    let point = 0;
+    if (decimal) {
+        let precisions = Number(decimal);
+        point = (precisions >= 0) ? precisions : 2;
+    }
+    let fraction = null;
+    let mxvalue = maxvalue ? Number(maxvalue) : -1;
+    if (mxvalue >= 0) {
+        fraction = mxvalue;
+        if (data.includes("-"))
+            fraction++;
+    }
+    let unchanged = false;
+    [data, unchanged] = cleansingValues(valueBfChange, fraction, point, data);
+    element.value = unchanged ? data : putComma(data);
 } 
-function putComma(data) { 
-	if ( data.indexOf(',') > -1 ) { data = clearComma(data); } 
-	let move = ( data.indexOf('.') > -1 ) ? data.indexOf('.') : data.length; 
-	let minus = ( data.indexOf('-') > -1 ) ? 1 : 0 ; 
-	while ( move > 3 ) { 
-		if ( minus && move <= 4  )  { break ; } 
-		data = data.substring(0,move-3)+","+data.substring(move-3) ; 
-		move -= 3 ; 
-	} 
-	return data; 
-} 
-function clearComma(data) { 
-	while (data.indexOf(',')!=-1) { 
-		data = data.replace(',',''); 
-	} 
-	return data; 
-} 
+function putComma(data) {
+    if (data.includes(',')) {
+        data = clearComma(data);
+    }
+    let move = (data.includes('.')) ? data.indexOf('.') : data.length;
+    let minus = (data.includes('-')) ? 1 : 0;
+    while (move > 3) {
+        if (minus && move <= 4) {
+            break;
+        }
+        data = data.substring(0, move - 3) + "," + data.substring(move - 3);
+        move -= 3;
+    }
+    return data;
+}
+function clearComma(data) {
+    while (data.includes(',')) {
+        data = data.replaceAll(',', '');
+    }
+    return data;
+}
 function getCaretPosition (ctrl) {
 	let iCaretPos = 0;
 	if (document.selection) { 
@@ -32233,12 +32285,14 @@ function parseNumber(avalue) {
 	return Number(removeComma(avalue)); 
 } 		  
 function removeComma(avalue) {
-	if(!avalue) return avalue; 
-	let result = avalue+""; 
-	while ( result.indexOf(",") > -1 ) { 
-		result = removeDelimiter(result,",");	} 
-	return result; 
-} 		 				 
+    if (!avalue)
+        return avalue;
+    let result = avalue + "";
+    while (result.includes(",")) {
+        result = removeDelimiter(result, ",");
+    }
+    return result;
+}
 function removeDelimiter(avalue,delimiter) { 
 	return avalue.replace(delimiter,""); 
 } 
@@ -32247,66 +32301,77 @@ function formatFloating(avalue,decimal) {
 	avalue = removeComma(avalue); 
 	return formatDecimal(avalue,decimal,true); 
 } 		 							 
-function formatDecimal(avalue,decimal,verifydecimal) { 
-	let sign = ""; 
-	let result = avalue+"";			 
-	let bstr = ""; 
-	let cstr = ""; 
-	let i = result.indexOf("-"); 
-	if(i>=0) { 
-		sign = "-"; 
-		result = result.substring(i+1); 
-	} else { 
-		i = result.indexOf("+"); 
-		if(i>=0) { 
-			sign = "+"; 
-			result = result.substring(i+1);					 
-		} 
-	} 
-	let astr = result; 
-	i = result.indexOf("."); 
-	if(i>0) { 
-		astr = result.substring(0,i); 
-		bstr = result.substring(i+1); 
-		cstr = result.substring(i); 
-	}  
-	let la = astr.length; 
-	if(la>3) { 
-		let tstr = astr; 
-		astr = ""; 
-		while(tstr!="") { 
-			la = tstr.length; 
-			let md = la % 3; 
-			if(md>0) { 
-				astr += tstr.substring(0,md)+","; 
-				tstr = tstr.substring(md); 
-			} else { 
-				astr += tstr.substring(0,3); 
-				tstr = tstr.substring(3); 
-				if(tstr!="") astr += ","; 
-			} 
-		} 
-	} 
-	if(verifydecimal) { 
-		if(decimal>0) { 
-			let l = bstr.length; 
-			if(decimal>l) { 
-				let j = 0; 
-				for(j=l;j<decimal;j++) { 
-					bstr += "0"; 
-				} 
-			} else { 
-				bstr = bstr.substring(0,decimal); 
-			}		 
-			if(astr=="") return ""; 
-			return sign+astr+"."+bstr; 
-		} else { 
-			return sign+astr; 
-		} 
-	} else { 
-		return sign+astr+cstr; 
-	} 
-}						 
+function resolveDecimalSign(avalue) {
+    let sign = "";
+    let result = avalue + "";
+    let i = result.indexOf("-");
+    if (i >= 0) {
+        sign = "-";
+        result = result.substring(i + 1);
+    }
+    else {
+        i = result.indexOf("+");
+        if (i >= 0) {
+            sign = "+";
+            result = result.substring(i + 1);
+        }
+    }
+    return [result, sign];
+}
+function resolveDecimalString(avalue) {
+    let cstr = "";
+    let bstr = "";
+    let astr = avalue;
+    let i = avalue.indexOf(".");
+    if (i > 0) {
+        astr = avalue.substring(0, i);
+        bstr = avalue.substring(i + 1);
+        cstr = avalue.substring(i);
+    }
+    let la = astr.length;
+    if (la > 3) {
+        let tstr = astr;
+        astr = "";
+        while (tstr != "") {
+            la = tstr.length;
+            let md = la % 3;
+            if (md > 0) {
+                astr += tstr.substring(0, md) + ",";
+                tstr = tstr.substring(md);
+            }
+            else {
+                astr += tstr.substring(0, 3);
+                tstr = tstr.substring(3);
+                if (tstr != "")
+                    astr += ",";
+            }
+        }
+    }
+    return [astr, bstr, cstr];
+}
+function formatDecimal(avalue, decimal, verifydecimal) {
+    let [result, sign] = resolveDecimalSign(avalue);
+    let [astr, bstr, cstr] = resolveDecimalString(result);
+    if (!verifydecimal) {
+        return sign + astr + cstr;
+    }
+    if (decimal <= 0) {
+        return sign + astr;
+    }
+    if (astr == "")
+        return "";
+    let l = bstr.length;
+    if (decimal > l) {
+        let j = 0;
+        for (j = l; j < decimal; j++) {
+            bstr += "0";
+        }
+    }
+    else {
+        bstr = bstr.substring(0, decimal);
+    }
+    return sign + astr + "." + bstr;
+}
 
 const header_action = { type: "button", action: "edit" };
 function ensureTableSetting(settings) {
@@ -32335,7 +32400,7 @@ function formatDataTable(data,field) {
 	try {
 		if(field) {
 			if(field.type=="DECIMAL") { 
-				return formatFloating(data,field.decimal!==undefined?field.decimal:2); 
+				return formatFloating(data, field.decimal === undefined ? 2 : field.decimal);
 			}
 			else if(field.type=="DATE") {                       
 				let date = Utilities/* Utilities */.F.parseDate(data);
@@ -32513,8 +32578,15 @@ function InputDatevue_type_template_id_0a48961d_render(_ctx, _cache, $props, $se
 const ALPHABETS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
 const NUMERICS = Array.from("0123456789");
 
+function randomize() {
+    const cryptoObj = window.crypto ?? window.msCrypto;
+    let array = new Uint32Array(1);
+    cryptoObj.getRandomValues(array);
+    return array[0] / (0xFFFFFFFF + 1);
+}
+
 function getRandomNumber(min = 1, max = 1000000) {
-	return Math.floor(Math.random() * (max - min + 1) + min);
+	return Math.floor(randomize() * (max - min + 1) + min);
 }
 
 function random(len = 6, alphabets = ALPHABETS ) {
