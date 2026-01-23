@@ -31059,13 +31059,13 @@ var jquery_default = /*#__PURE__*/__webpack_require__.n(jquery);
 		
 		if (! options.autoclose) {
 			// If autoclose is not setted, append a button
-			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button clock-close-button">' + options.donetext + '</button>')
+			$('<span class="btn btn-sm btn-default btn-block clockpicker-button clock-close-button">' + options.donetext + '</span>')
 				.click($.proxy(this.done, this))
 				.appendTo(popover);
 		}
 		
 		if(options.cleartext) {
-			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button clock-clear-button">' + options.cleartext + '</button>')
+			$('<span class="btn btn-sm btn-default btn-block clockpicker-button clock-clear-button">' + options.cleartext + '</span>')
 				//.click($.proxy(this.clear, this))
 				.on("click",() => { this.clear(); if(options.autoclose) this.hide(); })
 				.appendTo(popover);
