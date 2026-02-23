@@ -9,3 +9,5 @@ export const InputNumber: VueConstructor;
 export const InputTime: VueConstructor;
 export const LoadingPage: VueConstructor;
 export const PageHeader: VueConstructor;
+
+export declare function setupDraggable(control: any): void;

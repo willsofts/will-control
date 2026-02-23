@@ -30474,7 +30474,8 @@ __webpack_require__.d(__webpack_exports__, {
   InputTime: () => (/* reexport */ InputTime),
   LoadingPage: () => (/* reexport */ LoadingPage),
   PageHeader: () => (/* reexport */ PageHeader),
-  "default": () => (/* binding */ entry_lib)
+  "default": () => (/* binding */ entry_lib),
+  setupDraggable: () => (/* reexport */ setupDraggable)
 });
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
@@ -32127,34 +32128,60 @@ function openCalendar(src) {
 function triggerInput(input) { 
 	input.dispatchEvent(new Event('input', { bubbles: true })); 
 }
-function inputNumberOnly(myfield, e, decimal, isPlus) {
-    let key;
-    if (e)
-        key = e.which;
-    else
-        return true;
-    let keychar = String.fromCodePoint(key);
-    let element = myfield;
-    isPlus = Boolean(isPlus);
-    let isPoint = decimal !== null && decimal !== undefined && Number(decimal) !== 0;
-    if (key == 45 && !element.value.includes('-') && !isPlus) {
-        element.value = "-" + element.value;
-        triggerInput(element);
+function inputNumberOnly(
+  element,
+  event,
+  decimal,
+  isPlus
+) {	
+  const key = event.key
+  const value = element.value
+  const allowDecimal = decimal !== null && decimal !== undefined && Number(decimal) !== 0
+  const allowMinus = !Boolean(isPlus)
+  // ----------------------
+  // Control keys (always allow)
+  // ----------------------
+  if (
+    key === 'Backspace' ||
+    key === 'Tab' ||
+    key === 'Escape' ||
+    key === 'Delete' ||
+    key === 'ArrowLeft' ||
+    key === 'ArrowRight' ||
+    key === 'Home' ||
+    key === 'End'
+  ) {
+    return true
+  }
+  // ----------------------
+  // Minus
+  // ----------------------
+  if (key === '-') {
+    if (!allowMinus) return false
+    if (value.includes('-')) return false
+    element.value = '-' + value.replace('-', '')
+    triggerInput(element)
+    return false
+  }
+  // ----------------------
+  // Decimal
+  // ----------------------
+  if (key === '.') {
+    if (!allowDecimal) return false
+    if (value.includes('.')) return false
+    if (value === '' || value === '-') {
+      element.value += '0'
     }
-    if ((key == 46) && !element.value.includes('.') && isPoint) {
-        if (element.value == "")
-            element.value = '0';
-        triggerInput(element);
-        return true;
-    }
-    if ((key == null) || (key == 0) || (key == 8) || (key == 9) || (key == 27))
-        return true;
-    else if ("0123456789".includes(keychar)) {
-        triggerInput(element);
-        return true;
-    }
-    else
-        return false;
+    triggerInput(element)
+    return true
+  }
+  // ----------------------
+  // Number
+  // ----------------------
+  if (/^[0-9]$/.test(key)) {
+    return true
+  }
+  return false
 }
 function checkInputNumberOnly(myfield,e,decimal,isPlus) { 
 	let iskeyup = myfield.getAttribute('keyup'); 
@@ -32378,7 +32405,7 @@ function ensureTableSetting(settings) {
     }
     return headers;
 }
-function formatDataTable(data,field) {
+function formatDataTable(data,field,record) {
 	try {
 		if(field) {
 			if(field.type=="DECIMAL") { 
@@ -32398,6 +32425,9 @@ function formatDataTable(data,field) {
 		console.error(ex);
 		return data;
 	}
+}
+function setupDraggable(control) {
+    jquery_default()(control).draggable();
 }
 
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=script&lang=js
@@ -33278,6 +33308,7 @@ const PageHeader_exports_ = /*#__PURE__*/(0,exportHelper/* default */.A)(PageHea
 
 /* harmony default export */ const PageHeader = (PageHeader_exports_);
 ;// CONCATENATED MODULE: ./src/index.js
+
 
 
 
