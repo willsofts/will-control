@@ -30492,7 +30492,9 @@ __webpack_require__.d(__webpack_exports__, {
   InputTime: () => (/* reexport */ InputTime),
   LoadingPage: () => (/* reexport */ LoadingPage),
   PageHeader: () => (/* reexport */ PageHeader),
+  autocomplete: () => (/* reexport */ autocomplete),
   "default": () => (/* binding */ entry_lib),
+  setupAutocomplete: () => (/* reexport */ setupAutocomplete),
   setupDraggable: () => (/* reexport */ setupDraggable)
 });
 
@@ -32445,7 +32447,13 @@ function formatDataTable(data,field,record) {
 	}
 }
 function setupDraggable(control) {
-    jquery_default()(control).draggable();
+    return jquery_default()(control).draggable();
+}
+function setupAutocomplete(control,options) {
+    return jquery_default()(control).autocomplete(options);
+}
+function autocomplete(control,...args) {
+    return jquery_default()(control).autocomplete(args);
 }
 
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/controls/DataTable.vue?vue&type=script&lang=js

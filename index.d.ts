@@ -11,3 +11,5 @@ export const LoadingPage: VueConstructor;
 export const PageHeader: VueConstructor;
 
 export declare function setupDraggable(control: any): void;
+export declare function setupAutocomplete(control: any, options: any): void;
+export declare function autocomplete(control: any, ...args: any[]): void;
