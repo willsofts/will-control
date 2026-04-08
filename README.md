@@ -212,3 +212,6 @@ By default data format in table depending on type of column definition with the 
 | INTEGER | #,### | 1,234 |
 | DECIMAL | #,##0.00 | 1,234.50 |
 
+---
+### Classes Usage
+See more detail [will-control](./will-control.md)
